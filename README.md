@@ -43,12 +43,13 @@ On .env file in the project root to store your sensitive credentials:
 - `GEMINI_KEY_2=your_second_api_key`
 - `MT5_LOG_PATH=C:\Users\YourUser\AppData\Roaming\MetaQuotes\Terminal\...\MQL5\Logs`
 
-# 3. Python Installation
-
-**Install dependencies**
-pip install -r requirements.txt
-
+# Clone
 1. **Clone the repo:**
    ```bash
    git clone https://github.com/MSam-data/XAUUSD-SMC-AI-Agent.git
    cd XAUUSD-SMC-AI-Agent
+
+# 3. Python Installation
+
+**Install dependencies**
+`pip install -r requirements.txt`

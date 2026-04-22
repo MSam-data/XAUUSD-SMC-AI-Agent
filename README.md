@@ -44,7 +44,7 @@ In the indicator settings, ensure Alerts are enabled so signals are written to t
    cd XAUUSD-SMC-AI-Agent
 
 2. **Install dependencies**
-`pip install -r requirements.txt`
+- `pip install -r requirements.txt`
 
 3. **Find .env file**
 add your API keys and log file root folder as:

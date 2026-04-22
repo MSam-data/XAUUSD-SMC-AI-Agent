@@ -54,3 +54,60 @@ add your API keys and log file root folder as:
 
 4. **Run the application**
 `python XAUUSD_ai_m5_strategy_agent.py`
+
+## The project workflow.
+```mermaid
+graph TD
+    %% Start of System
+    Start([🚀 System Initialization]) --> InitMT5[Initialize MT5 & Connect Account]
+    InitMT5 --> InitAI[Initialize Dual-Key AI Clients]
+    
+    %% The Main Loop
+    InitAI --> TimeCheck{🕒 Is Trading Time?}
+    
+    %% Time Guard Logic
+    TimeCheck -- No --> Sleep[Sleep 60s / 'Outside Trading Hours']
+    Sleep --> TimeCheck
+    
+    TimeCheck -- Yes --> LogLink[Link to MT5 Log File: YYYYMMDD.log]
+    
+    %% Log Monitoring
+    LogLink --> WatchLogs[Monitoring Log File for 'SuperTrend' Trigger]
+    WatchLogs --> NewLine{New Signal Detected?}
+    
+    NewLine -- No --> WatchLogs
+    NewLine -- Yes --> SymbolCheck[Identify Symbol: XAUUSD, GBPJPY, etc.]
+    
+    %% Data Gathering
+    SymbolCheck --> GetContext[Get Market Context: <br/>H1 EMA 200 Trend <br/>M5 ATR Volatility <br/>Current Balance]
+    
+    %% AI Brain Rotation
+    GetContext --> AskAI{🧠 Ask AI Risk Manager <br/>'Load Balancer Rotation'}
+    
+    AskAI -- 429/Quota Limit --> RotateKey[Switch to Backup API Key]
+    RotateKey --> AskAI
+    
+    AskAI -- Execution Rejected --> LogReject[✋ Log Reason & Skip Signal]
+    LogReject --> CoolDown
+    
+    AskAI -- Execution Approved --> CalcLot[💰 Dynamic Lot Calculation <br/>Based on Risk % and AI SL]
+    
+    %% Execution
+    CalcLot --> SendTrade[✅ Send Order to MT5]
+    SendTrade --> CheckResult{Order Success?}
+    
+    CheckResult -- Yes --> LogSuccess[Print Trade Emojis & Details]
+    CheckResult -- No --> LogError[Log Execution Error]
+    
+    %% Final Loop Cycle
+    LogSuccess --> CoolDown[❄️ 30s Cool-down per Symbol]
+    LogError --> CoolDown
+    CoolDown --> TimeCheck
+    
+    %% Styling
+    style Start fill:#606060,stroke:#333,stroke-width:2px
+    style AskAI fill:#964B00,stroke:#000000,stroke-width:2px
+    style TimeCheck fill:#964B00,stroke:#28a745,stroke-width:2px
+    style SendTrade fill:#964B00,stroke:#0d6efd,stroke-width:2px
+```
+

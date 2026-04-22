@@ -36,20 +36,21 @@ This repository contains a sophisticated AI Trading Agent that automates Gold (X
 
 In the indicator settings, ensure Alerts are enabled so signals are written to the terminal logs.
 
-**2. Environment Configuration**
-On .env file in the project root to store your sensitive credentials:
-
-- `GEMINI_KEY_1=your_first_api_key`
-- `GEMINI_KEY_2=your_second_api_key`
-- `MT5_LOG_PATH=C:\Users\YourUser\AppData\Roaming\MetaQuotes\Terminal\...\MQL5\Logs`
-
-# Clone
+# 3. How to run the system
+**. Environment Configuration**
 1. **Clone the repo:**
    ```bash
    git clone https://github.com/MSam-data/XAUUSD-SMC-AI-Agent.git
    cd XAUUSD-SMC-AI-Agent
 
-# 3. Python Installation
-
-**Install dependencies**
+2. **Install dependencies**
 `pip install -r requirements.txt`
+
+3. **Find .env file**
+add your API keys and log file root folder as:
+- `GEMINI_KEY_1=your_first_api_key`
+- `GEMINI_KEY_2=your_second_api_key`
+- `MT5_LOG_PATH=C:\Users\YourUser\AppData\Roaming\MetaQuotes\Terminal\...\MQL5\Logs`
+
+4. **Run the application**
+`python XAUUSD_ai_m5_strategy_agent.py`
